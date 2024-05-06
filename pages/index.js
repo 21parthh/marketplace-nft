@@ -5,42 +5,45 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import { useEffect } from "react";
 import { client } from "../lib/sanityClient";
-import toast, {Toaster} from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const address = useAddress();
 
   const welcomeUser = (userName, toastHandler = toast) => {
     toastHandler.success(
-      `Welcome back${userName !== 'Unnamed' ? ` ${userName}` : ''}!`,
+      `Welcome back${userName !== "Unnamed" ? ` ${userName}` : ""}!`,
       {
         style: {
-          background: '#04111d',
-          color: '#fff',
+          background: "#04111d",
+          color: "#fff",
         },
       }
-    )
-  }
+    );
+  };
 
   useEffect(() => {
-    if(!address) return
-      ;(async () => {
-        const userDoc = {
-          _type:'users',
+    if (!address) return;
+    (async () => {
+      const userDoc = {
+        _type: "users",
         _id: address,
-        userName: 'Unnamed',
-        walletAddress: address
-        }
-        const result = await client.createIfNotExists(userDoc)
-        welcomeUser(result.userName)
-      })()
-  }, [address ])
-  
+        userName: "Unnamed",
+        walletAddress: address,
+      };
+      const result = await client.createIfNotExists(userDoc);
+      welcomeUser(result.userName);
+    })();
+  }, [address]);
+
   return (
     <div>
-      <Toaster position="top-center" reverseOrder={false}/>
+      <Toaster position="top-center" reverseOrder={false} />
       {address ? (
         <>
+          <head>
+            <meta name="viewport" content="initial-scale=0.9" />
+          </head>
           <Header />
           <Hero />
         </>

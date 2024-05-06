@@ -27,7 +27,7 @@ const Hero = () => {
               Discover, collect, and sell extraordinary NFTs
             </div>
             <div className={style.description}>
-              NFTM is the world&apos;s first and largest NFT marketplace
+            Mint it. Own it. Love it
             </div>
             <div className={style.ctaContainer}>
               <button className={style.accentedButton}>Explore</button>
