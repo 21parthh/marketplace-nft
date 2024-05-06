@@ -5,9 +5,22 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import { useEffect } from "react";
 import { client } from "../lib/sanityClient";
+import toast, {Toaster} from "react-hot-toast"
 
 export default function Home() {
   const address = useAddress();
+
+  const welcomeUser = (userName, toastHandler = toast) => {
+    toastHandler.success(
+      `Welcome back${userName !== 'Unnamed' ? ` ${userName}` : ''}!`,
+      {
+        style: {
+          background: '#04111d',
+          color: '#fff',
+        },
+      }
+    )
+  }
 
   useEffect(() => {
     if(!address) return
@@ -19,11 +32,13 @@ export default function Home() {
         walletAddress: address
         }
         const result = await client.createIfNotExists(userDoc)
+        welcomeUser(result.userName)
       })()
   }, [address ])
   
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false}/>
       {address ? (
         <>
           <Header />
@@ -34,6 +49,7 @@ export default function Home() {
           <main className={styles.main}>
             <ConnectWallet />
           </main>
+          <p className="pt-4 text-neutral-500">You Need To Connect Wallet</p>
         </div>
       )}
     </div>
