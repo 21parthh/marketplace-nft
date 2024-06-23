@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const style = {
   wrapper: `relative`,
@@ -48,12 +49,12 @@ const Hero = () => {
               />
               <div className={style.author}>
                 <div className={style.name}>Jolly</div>
-                <a
+                <Link
                   className="text-[#1868b7]"
                   href="/"
                 >
                   hola-kanola
-                </a>
+                </Link>
               </div>
             </div>
           </div>
