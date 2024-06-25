@@ -1,10 +1,27 @@
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+import NextLink from "next/link";
 import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import { useEffect } from "react";
 import { client } from "../lib/sanityClient";
+import {
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+} from "@chakra-ui/react";
+
+// export default function Home() {
+//  return(
+//
+//   );
+// }
+
+// import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+// import styles from "../styles/Home.module.css";
+// import Image from "next/image";
+import { useEffect } from "react";
+// import { client } from "../lib/sanityClient";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
@@ -44,8 +61,16 @@ export default function Home() {
           <head>
             <meta name="viewport" content="initial-scale=0.9" />
           </head>
-          <Header />
-          <Hero />
+          <Container>
+            <Flex h={"80vh"} alignItems={"center"} justifyContent={"center"}>
+              <Stack spacing={4} align={"center"}>
+                <Heading>Marketplace</Heading>
+                <Button as={NextLink} href="/buy">
+                  Shop NFTs
+                </Button>
+              </Stack>
+            </Flex>
+          </Container>
         </>
       ) : (
         <div className={styles.container}>
