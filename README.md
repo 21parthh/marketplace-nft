@@ -31,4 +31,3 @@ To get started with the project, follow these steps:
 - [Parth Deore](https://github.com/21parthh)
 - [Ishita Patil](https://github.com/ishitapatil08)
 - [Pranjal Shirsath](https://github.com/pranjalshirsath5)
-- [Varun Tolani](https://github.com/Varuntolani2108)
